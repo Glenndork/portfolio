@@ -1,0 +1,10 @@
+body {
+    background-color: #212121;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#picture {
+    width: 75px;
+    height: 75px;
+}
