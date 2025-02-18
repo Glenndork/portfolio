@@ -1,10 +1,11 @@
-body {
-    background-color: #212121;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-}
+@import "tailwindcss";
 
-#picture {
-    width: 75px;
-    height: 75px;
+.fade-enter {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-active {
+    opacity: 1;
+    transform: scale(1);
 }
