@@ -5,18 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glenn Viola | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="script.js"></script>
-    <style>
-        .fade-enter {
-            opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .fade-active {
-            opacity: 1;
-            transform: scale(1);
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+    <link rel="stylesheet" href="assets/styles.css">
+
 </head>
 <body class="bg-gray-900 text-white">
     <div class="min-h-screen flex flex-col items-center p-6">
@@ -30,25 +21,41 @@
         </header>
         
         <section class="w-full max-w-2xl text-center mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Projects</h2>
-            <div class="space-y-8">
-                <div class="relative w-full max-w-2xl mx-auto">
-                    <h3 class="text-xl font-bold mb-2">Bastion - Malware Detection App</h3>
-                    <p class="text-gray-400 text-sm">A desktop-based malware detection application using Support Vector Machines. Features include real-time malware scanning, SMS notifications via Vonage API, and a scan history log.</p>
-                    <div class="overflow-hidden relative w-full h-64 rounded-lg flex justify-center items-center">
-                        <img src="assets/bastion-1.png" class="max-w-full max-h-full object-contain" id="bastion-image" alt="Bastion App">
+            <h2 class="text-2xl font-semibold mb-4">Previous Projects</h2>
+            
+            <!-- Bastion Project -->
+            <div class="mb-10">
+                <h3 class="text-xl font-bold mb-2">Bastion - Malware Detection App</h3>
+                <p class="text-gray-400 text-sm mb-4">A desktop-based malware detection application using Support Vector Machines. Features include real-time malware scanning, SMS notifications via Vonage API, and a scan history log.</p>
+                
+                <div class="gallery js-flickity" data-flickity='{ "wrapAround": true, "autoPlay": 3000 }'>
+                    <div class="gallery-cell w-full h-64">
+                        <img src="assets/bastion-1.png" class="w-full h-full object-contain" alt="Bastion App">
                     </div>
-                    <button class="absolute top-1/2 left-4 bg-gray-700 text-white p-2 rounded" onclick="prevSlide('bastion')">&#9664;</button>
-                    <button class="absolute top-1/2 right-4 bg-gray-700 text-white p-2 rounded" onclick="nextSlide('bastion')">&#9654;</button>
+                    <div class="gallery-cell w-full h-64">
+                        <img src="assets/bastion-2.png" class="w-full h-full object-contain" alt="Bastion App">
+                    </div>
+                    <div class="gallery-cell w-full h-64">
+                        <img src="assets/bastion-3.png" class="w-full h-full object-contain" alt="Bastion App">
+                    </div>
                 </div>
-                <div class="relative w-full max-w-2xl mx-auto">
-                    <h3 class="text-xl font-bold mb-2">NIO: Speech Analysis</h3>
-                    <p class="text-gray-400 text-sm">Nio is an application that aims to help students and public speakers become more fluent in their speeches by providing them with tools and resources to improve their speaking skills.</p>
-                    <div class="overflow-hidden relative w-full h-64 rounded-lg flex justify-center items-center">
-                        <img src="assets/nio-1.png" class="max-w-full max-h-full object-contain" id="nio-image" alt="NIO App">
+            </div>
+        
+            <!-- NIO Project -->
+            <div>
+                <h3 class="text-xl font-bold mb-2">NIO: Speech Analysis</h3>
+                <p class="text-gray-400 text-sm mb-4">Nio is an application that aims to help students and public speakers become more fluent in their speeches by providing them with tools and resources to improve their speaking skills.</p>
+                
+                <div class="gallery js-flickity" data-flickity='{ "wrapAround": true, "autoPlay": 3000 }'>
+                    <div class="gallery-cell w-full h-64">
+                        <img src="assets/nio-1.jpg" class="w-full h-full object-contain" alt="NIO App">
                     </div>
-                    <button class="absolute top-1/2 left-4 bg-gray-700 text-white p-2 rounded" onclick="prevSlide('nio')">&#9664;</button>
-                    <button class="absolute top-1/2 right-4 bg-gray-700 text-white p-2 rounded" onclick="nextSlide('nio')">&#9654;</button>
+                    <div class="gallery-cell w-full h-64">
+                        <img src="assets/nio-2.jpg" class="w-full h-full object-contain" alt="NIO App">
+                    </div>
+                    <div class="gallery-cell w-full h-64">
+                        <img src="assets/nio-3.png" class="w-full h-full object-contain" alt="NIO App">
+                    </div>
                 </div>
             </div>
         </section>
@@ -63,9 +70,16 @@
                 <img src="assets/php.svg" alt="PHP" class="w-10 h-10">
                 <img src="assets/c.svg" alt="C" class="w-10 h-10">
                 <img src="assets/cpp.svg" alt="C++" class="w-10 h-10">
+                <img src="assets/python.svg" alt="C++" class="w-10 h-10">
 
             </div>
         </section>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
+    <script src="assets/script.js"></script>
+
 </body>
+
+
 </html>

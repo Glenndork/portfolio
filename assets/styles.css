@@ -1,0 +1,64 @@
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: sans-serif; 
+}
+
+/* Fix Flickity Carousel Background & Centering */
+.flickity-viewport {
+    display: flex;
+    align-items: center; /* Centers images vertically */
+    justify-content: center; /* Centers images horizontally */
+    margin: 0 auto; /* Ensures the entire carousel stays centered */
+    width: 100%;
+    height: 100%;
+}
+
+.flickity-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+/* Carousel Container */
+.gallery {
+    width: 80%;
+    max-width: 600px; /* Adjust width as needed */
+    margin: 0 auto; /* Ensures proper centering */
+}
+
+/* Individual Carousel Slides */
+.gallery-cell {
+    width: 50%;
+    height: 200px;
+    margin-right: 50px;
+    padding-right: 40px;
+    display: flex;
+    align-items: center; /* Centers images vertically */
+    justify-content: center; /* Centers images horizontally */
+    counter-increment: gallery-cell;
+}
+
+.gallery {
+    background: #EEE;
+  }
+
+/* Fix Image Display */
+.gallery-cell img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures full image visibility */
+}
+
+/* Number Label for Each Slide (If Needed) */
+.gallery-cell:before {
+    display: block;
+    text-align: center;
+    content: counter(gallery-cell);
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+}
