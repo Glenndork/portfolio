@@ -62,3 +62,32 @@ body {
     font-size: 80px;
     color: white;
 }
+.hero-bg {
+    background: linear-gradient(135deg, #1f2937, #111827);
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 4rem; /* Adjust margins for responsiveness */
+    border: 1px solid transparent;
+    box-shadow: 0 0 15px 5px rgba(37, 92, 137, 0.523); /* Light cyan border glow */
+}
+.content-bg{
+    background: linear-gradient(135deg, #1f2937, #111827);
+}
+.project-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+.btn-primary {
+    background: linear-gradient(to right, #3b82f6, #06b6d4);
+    transition: background 0.3s ease-in-out;
+}
+.btn-primary:hover {
+    background: linear-gradient(to right, #06b6d4, #3b82f6);
+}
+.gradient-text {
+    background: linear-gradient(to right, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
