@@ -9,82 +9,71 @@
     <link rel="stylesheet" href="assets/styles.css">
     <style>
         .hero-bg {
-            background: url('assets/bg.svg') no-repeat center center;
-            background-size: 150%; /* Zoom in on the background image */
-            background-position: center top; /* Adjust the position to focus on the desired area */
+            background: linear-gradient(135deg, #1f2937, #111827);
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            margin-left: 4rem;
+            margin-right: 4rem;
+            margin-bottom: 4rem; /* Adjust margins for responsiveness */
+        }
+        .content-bg{
+            background: linear-gradient(135deg, #1f2937, #111827);
         }
         .project-card:hover {
             transform: scale(1.05);
             transition: transform 0.3s ease-in-out;
         }
         .btn-primary {
-            background: linear-gradient(to right, #4b5563, #6b7280); /* Gradient of gray colors */
+            background: linear-gradient(to right, #3b82f6, #06b6d4);
             transition: background 0.3s ease-in-out;
         }
         .btn-primary:hover {
-            background: linear-gradient(to right, #6b7280, #4b5563); /* Gradient of gray colors */
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
 <body class="bg-neutral-900 text-white">
-
-    <nav class="w-full bg-stone-600 p-4 shadow-lg">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold gradient-text">Glenn Viola</a>
-            <div class="space-x-4 hidden md:flex">
-                <a href="#projects" class="hover:underline">Projects</a>
-                <a href="#tech-stack" class="hover:underline">Tech Stack</a>
+    <div id="home" class="hero-bg min-h-screen flex flex-col md:flex-row items-center justify-center px-4 text-center md:text-left mt-16">
+        <div class="md:w-1/2 hero-content px-8 flex flex-col items-center md:items-start">  
+            <h1 class="text-5xl font-bold text-white">Hello, It's Me</h1>
+            <h2 class="text-4xl font-bold gradient-text mt-2">Glenn Viola</h2>
+            <h3 class="text-2xl text-gray-400 mt-2">And I'm a Full-Stack Developer</h3>
+            <p class="text-lg text-gray-300 mt-4">I am a passionate software engineer with a background in full-stack web development, solving complex problems, learning new technologies, and creating scalable solutions.</p>
+            <div class="mt-6 flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4">
+                <a href="https://github.com/Glenndork" target="_blank" class="text-gray-200 hover:text-white">
+                    <button class="bg-neutral-700 text-white font-bold py-2 px-4 rounded inline-flex items-center shadow-lg w-full md:w-auto">
+                        <img src="assets/github.svg" alt="GitHub" class="w-5 h-5 mr-2">
+                        <span>GitHub</span>
+                    </button>
+                </a>
+                <a href="https://www.linkedin.com/in/glenn-viola-4b74962a8/" target="_blank" class="text-gray-200 hover:text-white">
+                    <button class="bg-neutral-700 text-white font-bold py-2 px-4 rounded inline-flex items-center shadow-lg w-full md:w-auto">
+                        <img src="assets/linkedin.svg" alt="LinkedIn" class="w-5 h-5 mr-2">
+                        <span>LinkedIn</span>
+                    </button>
+                </a>
+                <a href="assets/Glenn_Viola_Resume.pdf" download class="btn-primary text-white font-bold py-2 px-4 rounded inline-block w-full md:w-auto">Download CV</a>
             </div>
-            <div class="md:hidden">
-                <button id="menu-button" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
+            <a href="#projects" class="mt-6 btn-primary text-white font-bold py-2 px-4 rounded inline-block w-full md:w-auto text-center scroll-smooth">Get started</a>
         </div>
-        <div id="menu" class="hidden md:hidden flex flex-col space-y-2 mt-2">
-            <a href="#projects" class="hover:underline">Projects</a>
-            <a href="#tech-stack" class="hover:underline">Tech Stack</a>
+        <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
+            <img src="assets/VIOLA, GLENN B.JPG" alt="Glenn Viola" class="w-64 h-64 rounded-full">
         </div>
-    </nav>
-
-    <div class="hero-bg min-h-screen flex flex-col items-center justify-center p-6 text-center">
-        <h1 class="text-5xl font-bold text-white">Welcome to My Portfolio!</h1>
-        <p class="text-lg text-gray-300 mt-4">Showcase of my projects and skills</p>
-        <a href="#intro" class="mt-6 btn-primary text-white font-bold py-2 px-4 rounded">Get Started</a>
     </div>
 
     <div class="min-h-screen flex flex-col items-center p-6">
-        <header id="intro" class="text-center mb-8 flex flex-col md:flex-row items-center space-x-0 md:space-x-6 w-full max-w-4xl mt-6 bg-stone-600 p-6 rounded-lg shadow-lg">
-            <img src="assets/VIOLA, GLENN B.JPG" alt="Glenn Viola" class="w-36 h-36 rounded-full mb-4 md:mb-0">
-            <div class="text-left">
-                <h1 class="text-4xl font-bold">Glenn Viola</h1>
-                <p class="text-lg text-gray-400">Aspiring Software Engineer</p>
-                <p class="text-md text-gray-300 mt-2">I am a passionate and dedicated software engineer with a strong background in full-stack web development. I enjoy solving complex problems and continuously learning new technologies. My goal is to create efficient and scalable software solutions that make a meaningful impact. I have experience working with various programming languages and frameworks, and I am always eager to expand my skill set.</p>
-                <div class="mt-4 space-x-4">
-                    <a href="https://github.com/Glenndork" target="_blank" class="text-gray-200 hover:text-white">
-                        <button class="bg-neutral-700 text-white font-bold py-2 px-4 rounded inline-flex items-center shadow-lg">
-                            <img src="assets/github.svg" alt="GitHub" class="w-5 h-5 mr-2">
-                            <span>GitHub</span>
-                        </button>
-                    </a>
-                    <a href="https://www.linkedin.com/in/glenn-viola-4b74962a8/" target="_blank" class="text-gray-200 hover:text-white">
-                        <button class="bg-neutral-700 text-white font-bold py-2 px-4 rounded inline-flex items-center shadow-lg">
-                            <img src="assets/linkedin.svg" alt="LinkedIn" class="w-5 h-5 mr-2">
-                            <span>LinkedIn</span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </header>
         
         <section id="projects" class="w-full max-w-2xl text-center mb-8 bg-stone-600 p-6 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-semibold mb-4">Previous Projects</h2>
+            <h2 class="text-4xl font-bold  mb-4">Previous Projects</h2>
             
             <!-- Bastion Project -->
-            <div class="mb-10 project-card bg-neutral-700 p-4 rounded-lg shadow-lg">
-                <h3 class="text-xl font-bold mb-2">Bastion - Malware Detection App</h3>
+            <div class="mb-10 project-card content-bg p-4 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold gradient-text mb-2">Bastion - Malware Detection App</h3>
                 <p class="text-gray-400 text-sm mb-4">A desktop-based malware detection application using Support Vector Machines. Features include real-time malware scanning, SMS notifications via Vonage API, and a scan history log.</p>
                 
                 <div class="gallery js-flickity" data-flickity='{ "wrapAround": true, "autoPlay": 3000 }'>
@@ -101,8 +90,8 @@
             </div>
         
             <!-- NIO Project -->
-            <div class="project-card bg-neutral-700 p-4 rounded-lg shadow-lg">
-                <h3 class="text-xl font-bold mb-2">NIO: Speech Analysis</h3>
+            <div class="project-card content-bg p-4 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold gradient-text mb-2">NIO: Speech Analysis</h3>
                 <p class="text-gray-400 text-sm mb-4">Nio is an application that aims to help students and public speakers become more fluent in their speeches by providing them with tools and resources to improve their speaking skills.</p>
                 
                 <div class="gallery js-flickity" data-flickity='{ "wrapAround": true, "autoPlay": 3000 }'>
@@ -141,7 +130,7 @@
             <a href="https://github.com/Glenndork" target="_blank" class="text-gray-200 hover:text-white">
                 <img src="assets/github.svg" alt="GitHub" class="w-5 h-5 inline">
             </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-gray-200 hover:text-white">
+            <a href="https://www.linkedin.com/in/glenn-viola-4b74962a8/" target="_blank" class="text-gray-200 hover:text-white">
                 <img src="assets/linkedin.svg" alt="LinkedIn" class="w-5 h-5 inline">
             </a>
         </div>
@@ -156,6 +145,16 @@
             } else {
                 menu.classList.add('hidden');
             }
+        });
+
+        // Add smooth scrolling to all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
