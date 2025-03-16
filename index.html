@@ -7,6 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
     <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        .hero-bg {
+            background: url('assets/bg.svg') no-repeat center center;
+            background-size: 100%; /* Zoom in on the background image */
+            background-position: center top; /* Adjust the position to focus on the desired area */
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
 </head>
 <body class="bg-gray-900 text-white">
 
@@ -17,6 +28,7 @@
                 <a href="#projects" class="hover:underline">Projects</a>
                 <a href="#tech-stack" class="hover:underline">Tech Stack</a>
                 <a href="#about" class="hover:underline">About</a>
+                <a href="#contact" class="hover:underline">Contact</a>
             </div>
             <div class="md:hidden">
                 <button id="menu-button" class="text-white focus:outline-none">
@@ -29,9 +41,15 @@
         <div id="menu" class="hidden md:hidden flex flex-col space-y-2 mt-2">
             <a href="#projects" class="hover:underline">Projects</a>
             <a href="#tech-stack" class="hover:underline">Tech Stack</a>
-            <a href="#about" class="hover:underline">About</a>
+            <a href="#contact" class="hover:underline">Contact</a>
         </div>
     </nav>
+
+    <div class="hero-bg min-h-screen flex flex-col items-center justify-center p-6 text-center">
+        <h1 class="text-5xl font-bold text-white">Welcome to My Portfolio!</h1>
+        <p class="text-lg text-gray-300 mt-4">Showcase of my projects and skills</p>
+        <a href="#projects" class="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Get Started</a>
+    </div>
 
     <div class="min-h-screen flex flex-col items-center p-6">
         <header class="text-center mb-8 flex flex-col md:flex-row items-center space-x-0 md:space-x-6 w-full max-w-4xl mt-6 bg-gray-800 p-6 rounded-lg">
@@ -61,7 +79,7 @@
             <h2 class="text-2xl font-semibold mb-4">Previous Projects</h2>
             
             <!-- Bastion Project -->
-            <div class="mb-10">
+            <div class="mb-10 project-card bg-gray-700 p-4 rounded-lg">
                 <h3 class="text-xl font-bold mb-2">Bastion - Malware Detection App</h3>
                 <p class="text-gray-400 text-sm mb-4">A desktop-based malware detection application using Support Vector Machines. Features include real-time malware scanning, SMS notifications via Vonage API, and a scan history log.</p>
                 
@@ -79,7 +97,7 @@
             </div>
         
             <!-- NIO Project -->
-            <div>
+            <div class="project-card bg-gray-700 p-4 rounded-lg">
                 <h3 class="text-xl font-bold mb-2">NIO: Speech Analysis</h3>
                 <p class="text-gray-400 text-sm mb-4">Nio is an application that aims to help students and public speakers become more fluent in their speeches by providing them with tools and resources to improve their speaking skills.</p>
                 
@@ -111,7 +129,29 @@
             </div>
         </section>
 
+
+        <section id="contact" class="w-full max-w-2xl text-center mb-8 bg-gray-800 p-6 rounded-lg">
+            <h2 class="text-2xl font-semibold mb-4">Contact Me</h2>
+            <form action="https://formspree.io/f/{your_form_id}" method="POST" class="space-y-4">
+                <input type="text" name="name" placeholder="Your Name" class="w-full p-2 rounded bg-gray-900 text-white">
+                <input type="email" name="email" placeholder="Your Email" class="w-full p-2 rounded bg-gray-900 text-white">
+                <textarea name="message" placeholder="Your Message" class="w-full p-2 rounded bg-gray-900 text-white"></textarea>
+                <button type="submit" class="w-full p-2 rounded bg-blue-600 hover:bg-blue-700 text-white">Send Message</button>
+            </form>
+        </section>
     </div>
+
+    <footer class="w-full bg-gray-800 p-4 text-center">
+        <p class="text-gray-400">&copy; 2025 Glenn Viola. All rights reserved.</p>
+        <div class="mt-4 space-x-4">
+            <a href="https://github.com/Glenndork" target="_blank" class="text-gray-200 hover:text-white">
+                <img src="assets/github.svg" alt="GitHub" class="w-5 h-5 inline">
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-gray-200 hover:text-white">
+                <img src="assets/linkedin.svg" alt="LinkedIn" class="w-5 h-5 inline">
+            </a>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
     <script>
