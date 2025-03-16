@@ -7,20 +7,45 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
     <link rel="stylesheet" href="assets/styles.css">
-
 </head>
 <body class="bg-gray-900 text-white">
+
+    <nav class="w-full bg-gray-800 p-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold"></a>
+            <div class="space-x-4">
+                <a href="#projects" class="hover:underline">Projects</a>
+                <a href="#tech-stack" class="hover:underline">Tech Stack</a>
+            
+            </div>
+        </div>
+    </nav>
+
     <div class="min-h-screen flex flex-col items-center p-6">
-        <header class="text-center mb-8 flex items-center space-x-6 w-full max-w-4xl mt-6">
+        <header class="text-center mb-8 flex items-center space-x-6 w-full max-w-4xl mt-6 bg-gray-800 p-6 rounded-lg">
             <img src="assets/VIOLA, GLENN B.JPG" alt="Glenn Viola" class="w-36 h-36 rounded-full">
             <div class="text-left">
                 <h1 class="text-4xl font-bold">Glenn Viola</h1>
                 <p class="text-lg text-gray-400">Aspiring Software Engineer</p>
                 <p class="text-md text-gray-300 mt-2">I am a passionate and dedicated software engineer with a strong background in full-stack web development. I enjoy solving complex problems and continuously learning new technologies. My goal is to create efficient and scalable software solutions that make a meaningful impact. I have experience working with various programming languages and frameworks, and I am always eager to expand my skill set.</p>
+                <div class="mt-4 space-x-4">
+                    <a href="https://github.com/Glenndork" target="_blank" class="text-gray-200 hover:text-white">
+                        <button class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                            <img src="assets/github.svg" alt="GitHub" class="w-5 h-5 mr-2">
+                            <span>GitHub</span>
+                        </button>
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-gray-200 hover:text-white">
+                        <button class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                            <img src="assets/linkedin.svg" alt="LinkedIn" class="w-5 h-5 mr-2">
+                            <span>LinkedIn</span>
+                        </button>
+                    </a>
+                </div>
             </div>
         </header>
         
-        <section class="w-full max-w-2xl text-center mb-8">
+        <section id="projects" class="w-full max-w-2xl text-center mb-8 bg-gray-800 p-6 rounded-lg">
             <h2 class="text-2xl font-semibold mb-4">Previous Projects</h2>
             
             <!-- Bastion Project -->
@@ -60,7 +85,7 @@
             </div>
         </section>
         
-        <section class="w-full max-w-2xl text-center">
+        <section id="tech-stack" class="w-full max-w-2xl text-center mb-8 bg-gray-800 p-6 rounded-lg">
             <h2 class="text-2xl font-semibold mb-4">Tech Stack</h2>
             <div class="flex flex-wrap justify-center gap-4">
                 <img src="assets/html.svg" alt="HTML" class="w-10 h-10">
@@ -70,16 +95,13 @@
                 <img src="assets/php.svg" alt="PHP" class="w-10 h-10">
                 <img src="assets/c.svg" alt="C" class="w-10 h-10">
                 <img src="assets/cpp.svg" alt="C++" class="w-10 h-10">
-                <img src="assets/python.svg" alt="C++" class="w-10 h-10">
-
+                <img src="assets/python.svg" alt="Python" class="w-10 h-10">
             </div>
         </section>
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
     <script src="assets/script.js"></script>
-
 </body>
-
-
 </html>
