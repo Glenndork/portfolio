@@ -1,93 +1,110 @@
-* {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+        
+body {
+    font-family: 'JetBrains Mono', monospace;
 }
 
-body { 
-    font-family: sans-serif; 
+.gradient-text {
+    background: linear-gradient(90deg, #0ea5e9, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Fix Flickity Carousel Background & Centering */
-.flickity-viewport {
-    display: flex;
-    align-items: center; /* Centers images vertically */
-    justify-content: center; /* Centers images horizontally */
-    margin: 0 auto; /* Ensures the entire carousel stays centered */
+.grid-bg {
+    background-color: #0f172a;
+    background-image: radial-gradient(#334155 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Carousel Styles */
+.carousel {
+    position: relative;
+    overflow: hidden;
     width: 100%;
+    height: 300px; /* Increased height */
+    background-color: rgba(15, 23, 42, 0.8); /* Dark background for contrast */
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
     height: 100%;
 }
 
-.flickity-slider {
+.carousel-item {
+    min-width: 100%;
+    height: 100%;
+    padding: 10px; /* Add padding to prevent images from touching edges */
     display: flex;
     align-items: center;
     justify-content: center;
-
-}
-/* Carousel Container */
-.gallery {
-    width: 80%;
-    max-width: 600px; /* Adjust width as needed */
-    margin: 0 auto; /* Ensures proper centering */
 }
 
-/* Individual Carousel Slides */
-.gallery-cell {
-    width: 50%;
-    height: 200px;
-    margin-right: 50px;
-    padding-right: 40px;
-    display: flex;
-    align-items: center; /* Centers images vertically */
-    justify-content: center; /* Centers images horizontally */
-    counter-increment: gallery-cell;
-}
-
-.gallery {
-    background: #EEE;
-  }
-
-/* Fix Image Display */
-.gallery-cell img {
+.carousel-item img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Ensures full image visibility */
+    object-fit: contain; /* Changed from cover to contain */
+    border-radius: 4px;
 }
 
-/* Number Label for Each Slide (If Needed) */
-.gallery-cell:before {
-    display: block;
-    text-align: center;
-    content: counter(gallery-cell);
-    line-height: 200px;
-    font-size: 80px;
+.carousel-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 10;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.carousel-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background-color: #0ea5e9;
+}
+
+.carousel-control {
+    background-color: rgba(15, 23, 42, 0.7);
     color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 10;
 }
-.hero-bg {
-    background: linear-gradient(135deg, #1f2937, #111827);
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    margin-left: 4rem;
-    margin-right: 4rem;
-    margin-bottom: 4rem; /* Adjust margins for responsiveness */
-    border: 1px solid transparent;
-    box-shadow: 0 0 15px 5px rgba(37, 92, 137, 0.523); /* Light cyan border glow */
-}
-.content-bg{
-    background: linear-gradient(135deg, #1f2937, #111827);
-}
-.project-card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-}
-.btn-primary {
-    background: linear-gradient(to right, #3b82f6, #06b6d4);
-    transition: background 0.3s ease-in-out;
-}
-.btn-primary:hover {
-    background: linear-gradient(to right, #06b6d4, #3b82f6);
-}
-.gradient-text {
-    background: linear-gradient(to right, #3b82f6, #06b6d4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+.carousel-control:hover {
+    background-color: rgba(15, 23, 42, 0.9);
 }
