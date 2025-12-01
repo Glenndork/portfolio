@@ -4,16 +4,56 @@ body {
     font-family: 'JetBrains Mono', monospace;
 }
 
-.gradient-text {
-    background: linear-gradient(90deg, #0ea5e9, #6366f1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Theme variables */
+:root {
+  --primary: #0ea5e9;
+  --secondary: #6366f1;
+  --bg-accent1: rgba(14,165,233,0.08);
+  --bg-accent2: rgba(99,102,241,0.08);
+  --accent-glow-opacity: .35;
+  --hover-lift-translate: -6px;
+  --transition-speed: .35s;
+}
+.theme-calm {
+  --primary: #7dd3fc; /* sky-300 */
+  --secondary: #a5b4fc; /* indigo-200 */
+  --bg-accent1: rgba(125,211,252,0.06);
+  --bg-accent2: rgba(165,180,252,0.06);
+  --accent-glow-opacity: .18;
+  --hover-lift-translate: -3px;
+  --transition-speed: .25s;
+}
+.theme-bold {
+  --primary: #06b6d4; /* cyan-500 */
+  --secondary: #8b5cf6; /* violet-500 */
+  --bg-accent1: rgba(6,182,212,0.14);
+  --bg-accent2: rgba(139,92,246,0.14);
+  --accent-glow-opacity: .55;
+  --hover-lift-translate: -10px;
+  --transition-speed: .45s;
+}
+.motion-reduce * { transition: none !important; animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift, .tech-tile, .card-hover, .carousel-inner { transition: none !important; }
 }
 
+/* Use theme colors */
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Softer background uses themed accents */
 .grid-bg {
-    background-color: #0f172a;
-    background-image: radial-gradient(#334155 1px, transparent 1px);
-    background-size: 20px 20px;
+  background-color: #0f172a;
+  background-image:
+    radial-gradient(#334155 1px, transparent 1px),
+    radial-gradient(ellipse at top right, var(--bg-accent1), transparent 50%),
+    radial-gradient(ellipse at bottom left, var(--bg-accent2), transparent 50%);
+  background-size: 20px 20px, 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0, 0 0;
 }
 
 .card-hover {
@@ -25,7 +65,9 @@ body {
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
-/* Custom Carousel Styles */
+.hover-lift { transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease; }
+.hover-lift:hover { transform: translateY(var(--hover-lift-translate)); }
+
 .carousel {
     position: relative;
     overflow: hidden;
@@ -86,9 +128,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.carousel-indicator.active {
-    background-color: #0ea5e9;
-}
+.carousel-indicator.active { background-color: var(--primary); }
 
 .carousel-control {
     background-color: rgba(15, 23, 42, 0.7);
@@ -108,3 +148,69 @@ body {
 .carousel-control:hover {
     background-color: rgba(15, 23, 42, 0.9);
 }
+
+/* --- Aesthetic enhancements --- */
+:root {
+  --card-bg: rgba(15, 23, 42, 0.55);
+  --card-border: rgba(148,163,184,0.12);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.6);
+}
+
+.avatar-glow {
+  position: relative;
+}
+.avatar-glow::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 9999px;
+  background: conic-gradient(from 180deg at 50% 50%, var(--primary), var(--secondary), var(--primary));
+  filter: blur(12px);
+  opacity: var(--accent-glow-opacity);
+  z-index: 0;
+}
+.avatar-img {
+  position: relative;
+  z-index: 1;
+  border-radius: 9999px;
+  border: 4px solid #1f2937; /* gray-800 */
+}
+
+/* Tech stack tiles */
+.tech-tile {
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  box-shadow: 0 2px 0 0 rgba(148,163,184,0.08) inset;
+}
+.tech-tile:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 20px -8px color-mix(in srgb, var(--primary) 25%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 65%, transparent);
+}
+
+/* Badges */
+.badge {
+  background-color: #0b1220;
+  border: 1px solid rgba(148,163,184,0.12);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  opacity: .35;
+}
+
+/* Carousel polish */
+.carousel { border-radius: 0.75rem; }
+.carousel-indicator { width: 10px; height: 10px; }
+.carousel-control { backdrop-filter: blur(4px); }

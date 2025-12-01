@@ -95,14 +95,17 @@
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-20"></div>
-                        <img src="assets/VIOLA, GLENN B.JPG" alt="Glenn Viola" class="relative w-64 h-64 object-cover rounded-full border-4 border-gray-800">
+                    <div class="avatar-glow">
+                        <img src="assets/VIOLA, GLENN B.JPG" alt="Glenn Viola" class="avatar-img w-64 h-64 object-cover">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="container mx-auto px-4">
+        <div class="section-divider"></div>
+    </div>
 
     <!-- Projects Section -->
     <section id="projects" class="py-20">
@@ -115,7 +118,7 @@
             
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Bastion Project -->
-                <div class="bg-dark/50 backdrop-blur-sm border border-gray-800 rounded-xl overflow-hidden card-hover">
+                <div class="glass-card rounded-xl overflow-hidden hover-lift">
                     <div class="carousel" id="bastion-carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item">
@@ -147,22 +150,24 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold gradient-text">Bastion - Malware Detection App</h3>
+                        <h3 class="text-xl font-bold gradient-text flex items-center">
+                            <img src="assets/bastion-icon.png" alt="Bastion" class="w-5 h-5 mr-2 opacity-90"> Bastion - Malware Detection App
+                        </h3>
                         <p class="text-gray-400 mt-2">
                             A desktop-based malware detection application using Support Vector Machines. 
                             Features include real-time malware scanning, SMS notifications via Vonage API, 
                             and a scan history log.
                         </p>
                         <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-800 rounded-md text-xs">SVM</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded-md text-xs">Vonage API</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded-md text-xs">Desktop App</span>
+                            <span class="badge">SVM</span>
+                            <span class="badge">Vonage API</span>
+                            <span class="badge">Desktop App</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- NIO Project -->
-                <div class="bg-dark/50 backdrop-blur-sm border border-gray-800 rounded-xl overflow-hidden card-hover">
+                <div class="glass-card rounded-xl overflow-hidden hover-lift">
                     <div class="carousel" id="nio-carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item">
@@ -194,15 +199,17 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold gradient-text">NIO: Speech Analysis</h3>
+                        <h3 class="text-xl font-bold gradient-text flex items-center">
+                            <img src="assets/nio-icon.png" alt="NIO" class="w-5 h-5 mr-2 opacity-90"> NIO: Speech Analysis
+                        </h3>
                         <p class="text-gray-400 mt-2">
                             NIO is an application that aims to help students and public speakers become more fluent 
                             in their speeches by providing them with tools and resources to improve their speaking skills.
                         </p>
                         <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-800 rounded-md text-xs">Speech Analysis</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded-md text-xs">AI</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded-md text-xs">Public Speaking</span>
+                            <span class="badge">Speech Analysis</span>
+                            <span class="badge">AI</span>
+                            <span class="badge">Public Speaking</span>
                         </div>
                     </div>
                 </div>
@@ -221,49 +228,49 @@
             
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-8 max-w-3xl mx-auto">
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 flex items-center justify-center bg-dark/70 rounded-lg border border-gray-800 mb-2">
+                    <div class="w-16 h-16 flex items-center justify-center glass-card tech-tile rounded-lg mb-2">
                         <img src="assets/html.svg" alt="HTML" class="w-8 h-8">
                     </div>
                     <span class="text-xs text-gray-400">HTML</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 flex items-center justify-center bg-dark/70 rounded-lg border border-gray-800 mb-2">
+                    <div class="w-16 h-16 flex items-center justify-center glass-card tech-tile rounded-lg mb-2">
                         <img src="assets/javascript.svg" alt="JavaScript" class="w-8 h-8">
                     </div>
                     <span class="text-xs text-gray-400">JavaScript</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 flex items-center justify-center bg-dark/70 rounded-lg border border-gray-800 mb-2">
+                    <div class="w-16 h-16 flex items-center justify-center glass-card tech-tile rounded-lg mb-2">
                         <img src="assets/java.svg" alt="Java" class="w-8 h-8">
                     </div>
                     <span class="text-xs text-gray-400">Java</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 flex items-center justify-center bg-dark/70 rounded-lg border border-gray-800 mb-2">
+                    <div class="w-16 h-16 flex items-center justify-center glass-card tech-tile rounded-lg mb-2">
                         <img src="assets/flutter.svg" alt="Flutter" class="w-8 h-8">
                     </div>
                     <span class="text-xs text-gray-400">Flutter</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 flex items-center justify-center bg-dark/70 rounded-lg border border-gray-800 mb-2">
+                    <div class="w-16 h-16 flex items-center justify-center glass-card tech-tile rounded-lg mb-2">
                         <img src="assets/php.svg" alt="PHP" class="w-8 h-8">
                     </div>
                     <span class="text-xs text-gray-400">PHP</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 flex items-center justify-center bg-dark/70 rounded-lg border border-gray-800 mb-2">
+                    <div class="w-16 h-16 flex items-center justify-center glass-card tech-tile rounded-lg mb-2">
                         <img src="assets/c.svg" alt="C" class="w-8 h-8">
                     </div>
                     <span class="text-xs text-gray-400">C</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 flex items-center justify-center bg-dark/70 rounded-lg border border-gray-800 mb-2">
+                    <div class="w-16 h-16 flex items-center justify-center glass-card tech-tile rounded-lg mb-2">
                         <img src="assets/cpp.svg" alt="C++" class="w-8 h-8">
                     </div>
                     <span class="text-xs text-gray-400">C++</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 flex items-center justify-center bg-dark/70 rounded-lg border border-gray-800 mb-2">
+                    <div class="w-16 h-16 flex items-center justify-center glass-card tech-tile rounded-lg mb-2">
                         <img src="assets/python.svg" alt="Python" class="w-8 h-8">
                     </div>
                     <span class="text-xs text-gray-400">Python</span>
