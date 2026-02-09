@@ -1,4 +1,4 @@
-        // Mobile menu toggle
+// Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
@@ -101,4 +101,45 @@
             carousels.forEach(carousel => {
                 new Carousel(carousel);
             });
+            ensureProjectsGrid();
+            equalizeProjectCardHeights();
         });
+
+        // Equalize project card heights in grid
+        function equalizeProjectCardHeights() {
+            const cards = document.querySelectorAll('#projects .glass-card');
+            if (!cards.length) return;
+
+            // Reset heights to natural
+            cards.forEach(card => {
+                card.style.minHeight = '';
+            });
+
+            // Compute tallest height
+            let maxHeight = 0;
+            cards.forEach(card => {
+                const h = card.getBoundingClientRect().height;
+                if (h > maxHeight) maxHeight = h;
+            });
+
+            // Apply equal height
+            cards.forEach(card => {
+                card.style.minHeight = `${Math.ceil(maxHeight)}px`;
+            });
+        }
+
+        // Ensure grid layout class is present (fallback if missing)
+        function ensureProjectsGrid() {
+            const container = document.querySelector('#projects .grid');
+            const projectsSection = document.querySelector('#projects');
+            if (!container && projectsSection) {
+                projectsSection.classList.add('grid');
+                projectsSection.classList.add('grid-cols-1');
+                projectsSection.classList.add('md:grid-cols-2');
+                projectsSection.classList.add('gap-6');
+            }
+        }
+
+        // Re-run on resize and after images load
+        window.addEventListener('resize', equalizeProjectCardHeights);
+        window.addEventListener('load', equalizeProjectCardHeights);
