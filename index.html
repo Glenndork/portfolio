@@ -15,11 +15,12 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#ffffff',
-                        secondary: '#e5e7eb',
-                        accent: '#9ca3af',
-                        dark: '#0a0e27',
-                        'dark-blue': '#0f1729'
+                        /* light theme colors */
+                        primary: '#000000',
+                        secondary: '#f3f4f6',
+                        accent: '#6b7280',
+                        dark: '#ffffff',
+                        'dark-blue': '#f8fafc'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -41,7 +42,8 @@
                     <a href="#home" class="text-gray-300 hover:text-primary transition-all duration-300 font-medium">Home</a>
                     <a href="#projects" class="text-gray-300 hover:text-primary transition-all duration-300 font-medium">Projects</a>
                     <a href="#tech-stack" class="text-gray-300 hover:text-primary transition-all duration-300 font-medium">Tech Stack</a>
-                    <a href="#" download class="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-black font-medium hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
+                    <!-- link should point to the actual CV file in assets; replace with your real filename -->
+                    <a href="assets/Glenn_Viola_CV.pdf" download="Glenn_Viola_CV.pdf" class="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-black font-medium hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
                         Download CV
                     </a>
                 </nav>
@@ -56,7 +58,8 @@
                 <a href="#home" class="block text-gray-300 hover:text-primary transition-colors">Home</a>
                 <a href="#projects" class="block text-gray-300 hover:text-primary transition-colors">Projects</a>
                 <a href="#tech-stack" class="block text-gray-300 hover:text-primary transition-colors">Tech Stack</a>
-                <a href="#" download class="block px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-black text-center">
+                <!-- mobile download link -->
+                <a href="assets/Glenn_Viola_CV.pdf" download="Glenn_Viola_CV.pdf" class="block px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-black text-center">
                     Download CV
                 </a>
             </div>
@@ -278,9 +281,6 @@
                 <h2 class="text-4xl md:text-5xl font-bold mt-6 mb-4">
                     <span class="gradient-text">Tech Stack</span>
                 </h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    Tools and technologies I use to bring ideas to life
-                </p>
             </div>
             
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
