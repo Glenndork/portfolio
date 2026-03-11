@@ -15,14 +15,11 @@
             theme: {
                 extend: {
                     colors: {
-                        /* Theme Palette - Grayscale */
-                        primary: '#495057',
-                        secondary: '#6C757D',
+                        background: '#212529',
+                        foreground: '#F8F9FA',
+                        card: '#343A40',
+                        muted: '#6C757D',
                         accent: '#ADB5BD',
-                        light: {
-                            50: '#CED4DA',
-                            100: '#DEE2E6',
-                        }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -32,357 +29,587 @@
         }
     </script>
 </head>
-<body class="bg-light-100 text-primary min-h-screen relative">
+<body class="bg-background text-foreground min-h-screen relative">
+
     <!-- Header/Navigation -->
-    <header class="fixed w-full z-50 border-b border-light-50 bg-light-100/95 backdrop-blur-sm">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="#home" class="text-2xl font-bold text-primary tracking-tight">
-                    &lt;GV /&gt;
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-card">
+        <div class="mx-auto max-w-6xl px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#" class="text-foreground font-semibold text-lg tracking-tight hover:text-accent transition-colors">
+                    Portfolio
                 </a>
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-primary hover:text-accent transition-colors duration-300 font-medium relative group">
-                        Home
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a href="#projects" class="text-primary hover:text-accent transition-colors duration-300 font-medium relative group">
-                        Projects
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a href="#tech-stack" class="text-primary hover:text-accent transition-colors duration-300 font-medium relative group">
-                        Tech Stack
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a href="assets/resume.pdf" download="Glenn_Viola_CV.pdf" class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:shadow-lg hover:shadow-primary/30 transition-all duration-300">
-                        Download CV
-                    </a> 
-                </nav>
-                <button id="menu-toggle" class="md:hidden text-primary hover:text-accent">
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex items-center gap-8">
+                    <li><a href="#about" class="text-accent text-sm tracking-wide hover:text-foreground transition-colors duration-200">About</a></li>
+                    <li><a href="#projects" class="text-accent text-sm tracking-wide hover:text-foreground transition-colors duration-200">Projects</a></li>
+                    <li><a href="#stack" class="text-accent text-sm tracking-wide hover:text-foreground transition-colors duration-200">Tech Stack</a></li>
+                    <li><a href="#contact" class="text-accent text-sm tracking-wide hover:text-foreground transition-colors duration-200">Contact</a></li>
+                </ul>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" class="md:hidden text-foreground hover:text-accent transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-            </div>
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4 pb-4 border-t border-gray-300 pt-4">
-                <a href="#home" class="block text-gray-900 hover:text-primary transition-colors">Home</a>
-                <a href="#tech-stack" class="block text-gray-900 hover:text-primary transition-colors">Tech Stack</a>
-                <a href="#projects" class="block text-gray-900 hover:text-primary transition-colors">Projects</a>
-                <a href="assets/resume.pdf" download="Glenn_Viola_CV.pdf" class="block px-4 py-2 bg-primary rounded-lg text-white text-center font-medium">
-                    Download CV
-                </a>
+            </nav>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-4 border-t border-card pt-4">
+                <a href="#about" class="block text-accent text-sm tracking-wide hover:text-foreground transition-colors duration-200">About</a>
+                <a href="#projects" class="block text-accent text-sm tracking-wide hover:text-foreground transition-colors duration-200">Projects</a>
+                <a href="#stack" class="block text-accent text-sm tracking-wide hover:text-foreground transition-colors duration-200">Tech Stack</a>
+                <a href="#contact" class="block text-accent text-sm tracking-wide hover:text-foreground transition-colors duration-200">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center pt-20 relative">
-        <div class="container mx-auto px-6 py-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
-                <div class="space-y-6 z-10">
-                    <h1 class="text-5xl md:text-7xl font-bold leading-tight text-primary">
-                        Hello, I'm<br>
-                        <span class="text-secondary">Glenn Viola</span>
-                    </h1>
-                    <p class="text-xl text-secondary leading-relaxed max-w-xl">
-                        Full-Stack Developer specializing in building exceptional digital experiences with modern technologies.
+    <section class="min-h-screen flex flex-col justify-center px-6 pt-20 bg-background">
+        <div class="mx-auto max-w-6xl w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column -->
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <p class="text-muted text-sm uppercase tracking-[0.2em] font-medium">
+                            Full Stack Developer
+                        </p>
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1]">
+                            <span class="block whitespace-nowrap">Hi! I'm Glenn Viola</span>
+                            <span class="block text-2xl md:text-3xl lg:text-4xl text-accent">Crafting Digital Experiences</span>
+                        </h1>
+                    </div>
+
+                    <p class="text-accent text-lg leading-relaxed max-w-xl">
+                        I build accessible, pixel-perfect digital experiences for the web. 
+                        Passionate about clean code, thoughtful design, and creating products 
+                        that make a difference.
                     </p>
-                    <div class="flex flex-wrap gap-4 pt-4">
-                        <a href="https://github.com/Glenndork" target="_blank" 
-                           class="px-6 py-3 border border-primary rounded-lg hover:bg-primary/10 transition-all duration-300 flex items-center gap-2 text-primary">
+
+                    <div class="flex items-center gap-6 pt-4">
+                        <a href="https://github.com/Glenndork" target="_blank" class="text-muted hover:text-foreground transition-colors duration-200" aria-label="GitHub">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
                             </svg>
-                            GitHub
                         </a>
-                        <a href="https://www.linkedin.com/in/glenn-viola-4b74962a8/" target="_blank" 
-                           class="px-6 py-3 border border-secondary rounded-lg hover:bg-secondary/10 transition-all duration-300 flex items-center gap-2 text-primary">
+                        <a href="https://www.linkedin.com/in/glenn-viola-4b74962a8/" target="_blank" class="text-muted hover:text-foreground transition-colors duration-200" aria-label="LinkedIn">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
                             </svg>
-                            LinkedIn
                         </a>
-                        <a href="#projects" 
-                           class="px-6 py-3 bg-primary rounded-lg text-white font-medium hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 flex items-center gap-2">
-                            View Projects
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        <a href="mailto:glenndork@gmail.com" class="text-muted hover:text-foreground transition-colors duration-200" aria-label="Email">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Content - Avatar -->
-                <div class="flex justify-center">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-primary/10 rounded-2xl blur-3xl"></div>
-                        <img src="assets/VIOLA, GLENN B.JPG" alt="Glenn Viola" class="relative w-72 h-72 md:w-96 md:h-96 object-cover rounded-2xl border-2 border-light-50">
+                <!-- Right Column - Profile Image -->
+                <div class="hidden lg:flex flex-col justify-center items-center">
+                    <div class="relative w-80 h-80">
+                        <img src="assets/picture.jpg" alt="Glenn Viola" class="w-full h-full object-cover rounded-lg shadow-2xl">
+                        <!-- Optional: Decorative border -->
+                        <div class="absolute inset-0 border-2 border-accent rounded-lg opacity-50"></div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="mt-16 lg:mt-24 flex justify-center">
+                <a href="#about" class="text-muted hover:text-foreground transition-colors duration-200 animate-bounce" aria-label="Scroll to about section">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Divider -->
-    <div class="container mx-auto px-6">
-        <div class="h-px bg-gradient-to-r from-light-50 via-accent to-light-50 my-20"></div>
-    </div>
-
-    <!-- Tech Stack Section -->
-    <section id="tech-stack" class="py-20 px-6">
-        <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-primary">
-                    Tech Stack
-                </h2>
-            </div>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-light-100 border-2 border-light-50 rounded-2xl p-8 space-y-10">
-                    <!-- Languages Group -->
-                    <div>
-                        <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                            <span class="w-1 h-6 bg-primary rounded"></span>
-                            Languages
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">Java</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">C</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">C++</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">HTML/CSS</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">JavaScript</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">PHP</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">MySQL</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">Python</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="h-px bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300"></div>
-
-                    <!-- Frameworks Group -->
-                    <div>
-                        <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                            <span class="w-1 h-6 bg-primary rounded"></span>
-                            Frameworks
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">Flutter</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">React</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">Laravel</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="h-px bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300"></div>
-
-                    <!-- Developer Tools Group -->
-                    <div>
-                        <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                            <span class="w-1 h-6 bg-primary rounded"></span>
-                            Developer Tools
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">Visual Studio Code</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">Git/Github</p>
-                            </div>
-                            <div class="px-4 py-2 bg-light-50 border border-primary/30 rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all duration-300">
-                                <p class="text-primary font-medium">Figma</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- About Section -->
+    <!-- <section id="about" class="py-24 px-6 bg-background">
+        <div class="mx-auto max-w-6xl">
+            <div class="grid lg:grid-cols-[200px_1fr] gap-12">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-px bg-muted mt-3"></div>
+                    <span class="text-muted text-sm uppercase tracking-[0.2em] font-medium">About</span>
                 </div>
-            </div>
+
+                <div class="space-y-8 max-w-2xl">
+                    <p class="text-foreground text-xl md:text-2xl leading-relaxed font-light">
+                        I'm a developer passionate about crafting accessible, pixel-perfect user interfaces that blend thoughtful design with robust engineering.
+                    </p>
+
+                    <div class="space-y-6 text-accent leading-relaxed">
+                        <p>
+                            My favorite work lies at the intersection of design and development, creating experiences that not only look great but are meticulously built for performance and usability.
+                        </p>
+                        <p>
+                            I've had the opportunity to develop software across a variety of settings — from agencies and large corporations to startups and small digital product studios. This range of experiences has shaped my approach to problem-solving and collaboration.
+                        </p>
+                        <p>
+                            When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or diving deep into the latest developments in web performance and accessibility.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-8 pt-8 border-t border-card">
+                        <div>
+                            <div class="text-3xl font-bold text-foreground">5+</div>
+                            <div class="text-muted text-sm mt-1">Years Experience</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-foreground">50+</div>
+                            <div class="text-muted text-sm mt-1">Projects Completed</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-foreground">20+</div>
+                            <div class="text-muted text-sm mt-1">Happy Clients</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-4xl font-bold text-center mb-16 text-primary">
-                My Projects
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- iClinicSys Project -->
-                <div class="bg-light-100 border border-light-50 rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300 flex flex-col group">
-                    <div class="relative bg-light-50 p-8 flex items-center justify-center h-48 overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 group-hover:from-primary/10 group-hover:to-primary/20 transition-all duration-300"></div>
-                        <img src="assets/iclinicsysMainLogo.png" alt="iClinicSys Logo" class="max-w-full h-auto object-contain relative z-10">
+    <section id="projects" class="py-24 px-6 bg-background">
+        <div class="mx-auto max-w-6xl">
+            <div class="grid lg:grid-cols-[200px_1fr] gap-12">
+                <!-- Section Label -->
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-px bg-muted mt-3"></div>
+                    <span class="text-muted text-sm uppercase tracking-[0.2em] font-medium">Projects</span>
+                </div>
+
+                <!-- Content -->
+                <div class="space-y-12">
+                    <!-- Featured Projects -->
+                    <div class="space-y-8">
+                        <!-- iClinicSys -->
+                        <article class="group relative p-6 md:p-8 bg-card/50 border border-card hover:border-muted transition-all duration-300">
+                            <div class="flex flex-col md:flex-row md:items-start gap-6">
+                                <div class="md:w-32 flex-shrink-0">
+                                    <img src="assets/iclinicsysMainLogo.png" alt="iClinicSys Logo" class="w-32 h-32 object-contain my-10 mx-auto md:mx-0">
+                                </div>
+                                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 flex-1">
+                                    <div class="space-y-4 flex-1">
+                                        <h3 class="text-2xl font-bold text-foreground">iClinicSys</h3>
+                                        <p class="text-accent leading-relaxed max-w-xl">
+                                            Modernized a legacy clinic information system using Laravel while retaining the existing database structure. Implemented patient records, administrative dashboards, and reference data modules. Fixed legacy data issues, optimized queries, and ensured secure, role-based access to patient information. Added a new feature wherein it can predict the diagnosis of the patient based on the patient data and chief complaint.
+                                        </p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">Laravel</span>
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">React</span>
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">MySQL</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- VAWC -->
+                        <article class="group relative p-6 md:p-8 bg-card/50 border border-card hover:border-muted transition-all duration-300">
+                            <div class="flex flex-col md:flex-row md:items-start gap-6">
+                                <div class="md:w-32 flex-shrink-0">
+                                    <img src="assets/vawcMainLogo.png" alt="VAWC Logo" class="w-32 h-32 object-contain mx-auto md:mx-0">
+                                </div>
+                                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 flex-1">
+                                    <div class="space-y-4 flex-1">
+                                        <h3 class="text-2xl font-bold text-foreground">VAWC</h3>
+                                        <p class="text-accent leading-relaxed max-w-xl">
+                                            Refactored an existing EMR VAWC module into a standalone information system. Preserved and adapted legacy data structures while separating core system logic. Implemented case records and administrative dashboards with secure access control.
+                                        </p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">Laravel</span>
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">React</span>
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">MySQL</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Bastion -->
+                        <article class="group relative p-6 md:p-8 bg-card/50 border border-card hover:border-muted transition-all duration-300">
+                            <div class="flex flex-col md:flex-row md:items-start gap-6">
+                                <div class="md:w-32 flex-shrink-0">
+                                    <img src="assets/bastion-icon.png" alt="Bastion Logo" class="w-32 h-32 object-contain mx-auto md:mx-0">
+                                </div>
+                                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 flex-1">
+                                    <div class="space-y-4 flex-1">
+                                        <h3 class="text-2xl font-bold text-foreground">Bastion</h3>
+                                        <p class="text-accent leading-relaxed max-w-xl">
+                                            A desktop-based malware detection application using Support Vector Machines. Features include real-time malware scanning, SMS notifications via Vonage API, and a comprehensive scan history log for security monitoring.
+                                        </p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">SVM</span>
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">Vonage API</span>
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">Desktop App</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- NIO -->
+                        <article class="group relative p-6 md:p-8 bg-card/50 border border-card hover:border-muted transition-all duration-300">
+                            <div class="flex flex-col md:flex-row md:items-start gap-6">
+                                <div class="md:w-32 flex-shrink-0">
+                                    <img src="assets/nio-icon.png" alt="NIO Logo" class="w-64 h-64 object-contain mx-auto md:mx-0">
+                                </div>
+                                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 flex-1">
+                                    <div class="space-y-4 flex-1">
+                                        <h3 class="text-2xl font-bold text-foreground">NIO: Speech Analysis</h3>
+                                        <p class="text-accent leading-relaxed max-w-xl">
+                                            NIO is an application that aims to help students and public speakers become more fluent in their speeches by providing them with tools and resources to improve their speaking skills through advanced speech analysis.
+                                        </p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">Speech Analysis</span>
+                                            <span class="px-3 py-1 text-sm bg-muted/20 text-accent rounded">AI</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-2xl font-bold text-primary mb-3">iClinicSys</h3>
-                        <p class="text-sm text-secondary mb-2 font-semibold">Clinic Information System</p>
-                        <p class="text-secondary text-sm mb-4 flex-grow leading-relaxed">
-                            Modernized a legacy clinic information system using Laravel while retaining the existing database structure. Implemented patient records, administrative dashboards, and reference data modules. Fixed legacy data issues, optimized queries, and ensured secure, role-based access to patient information.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/30">Laravel</span>
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/30">React</span>
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/30">MySQL</span>
+
+                    <!-- Other Projects Grid -->
+                    <!-- <div>
+                        <h4 class="text-muted text-sm uppercase tracking-[0.15em] mb-6">Other Notable Projects</h4>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <article class="group p-5 bg-card/30 border border-card hover:border-muted transition-all duration-300">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h3 class="text-foreground font-medium group-hover:text-accent transition-colors">Analytics Dashboard</h3>
+                                    <div class="flex items-center gap-3">
+                                        <a href="#" class="text-muted hover:text-foreground transition-colors text-sm">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="text-muted hover:text-foreground transition-colors text-sm">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p class="text-accent text-sm leading-relaxed mb-4">
+                                    Real-time data visualization platform with customizable widgets and automated reporting.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 text-xs bg-muted/20 text-accent rounded">Vue.js</span>
+                                    <span class="px-2 py-1 text-xs bg-muted/20 text-accent rounded">GraphQL</span>
+                                    <span class="px-2 py-1 text-xs bg-muted/20 text-accent rounded">AWS</span>
+                                </div>
+                            </article>
+
+                            <article class="group p-5 bg-card/30 border border-card hover:border-muted transition-all duration-300">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h3 class="text-foreground font-medium group-hover:text-accent transition-colors">Mobile Fitness App</h3>
+                                    <div class="flex items-center gap-3">
+                                        <a href="#" class="text-muted hover:text-foreground transition-colors text-sm">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="text-muted hover:text-foreground transition-colors text-sm">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p class="text-accent text-sm leading-relaxed mb-4">
+                                    Cross-platform fitness tracking with workout plans and social features.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 text-xs bg-muted/20 text-accent rounded">React Native</span>
+                                    <span class="px-2 py-1 text-xs bg-muted/20 text-accent rounded">Firebase</span>
+                                </div>
+                            </article>
+
+                            <article class="group p-5 bg-card/30 border border-card hover:border-muted transition-all duration-300">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h3 class="text-foreground font-medium group-hover:text-accent transition-colors">Portfolio CMS</h3>
+                                    <div class="flex items-center gap-3">
+                                        <a href="#" class="text-muted hover:text-foreground transition-colors text-sm">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="text-muted hover:text-foreground transition-colors text-sm">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p class="text-accent text-sm leading-relaxed mb-4">
+                                    Headless CMS designed for creative professionals and developers.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 text-xs bg-muted/20 text-accent rounded">Next.js</span>
+                                    <span class="px-2 py-1 text-xs bg-muted/20 text-accent rounded">Tailwind</span>
+                                    <span class="px-2 py-1 text-xs bg-muted/20 text-accent rounded">Vercel</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="stack" class="py-24 px-6 bg-background">
+        <div class="mx-auto max-w-6xl">
+            <div class="grid lg:grid-cols-[200px_1fr] gap-12">
+                <!-- Section Label -->
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-px bg-muted mt-3"></div>
+                    <span class="text-muted text-sm uppercase tracking-[0.2em] font-medium">Tech Stack</span>
+                </div>
+
+                <!-- Content -->
+                <div class="space-y-12">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Languages -->
+                        <div class="space-y-4">
+                            <h3 class="text-foreground font-semibold text-sm uppercase tracking-[0.1em] pb-2 border-b border-card">Languages</h3>
+                            <ul class="space-y-2">
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>Java
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>C
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>C++
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>HTML/CSS
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>JavaScript
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>PHP
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>MySQL
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>Python
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Frontend -->
+                        <div class="space-y-4">
+                            <h3 class="text-foreground font-semibold text-sm uppercase tracking-[0.1em] pb-2 border-b border-card">Frameworks</h3>
+                            <ul class="space-y-2">
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>Flutter
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>React
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>Laravel
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Developer Tools -->
+                        <div class="space-y-4">
+                            <h3 class="text-foreground font-semibold text-sm uppercase tracking-[0.1em] pb-2 border-b border-card">Developer Tools</h3>
+                            <ul class="space-y-2">
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>Visual Studio Code
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>Git/Github
+                                </li>
+                                <li class="text-accent hover:text-foreground transition-colors duration-200 cursor-default flex items-center gap-2 group">
+                                    <span class="w-1 h-1 bg-muted group-hover:bg-foreground transition-colors"></span>Figma
+                                </li>
+                            </ul>
+                        </div>
+
+                    <!-- Skills Visualization -->
+                    <div class="pt-8 border-t border-card">
+                        <h3 class="text-muted text-sm uppercase tracking-[0.15em] mb-8">Proficiency</h3>
+                        <div class="space-y-6">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-foreground text-sm">Backend Development</span>
+                                    <span class="text-muted text-sm font-mono">90%</span>
+                                </div>
+                                <div class="h-1 bg-card overflow-hidden"><div class="h-full bg-muted" style="width: 90%"></div></div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-foreground text-sm">Frontend Development</span>
+                                    <span class="text-muted text-sm font-mono">80%</span>
+                                </div>
+                                <div class="h-1 bg-card overflow-hidden"><div class="h-full bg-muted" style="width: 80%"></div></div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-foreground text-sm">Database Design</span>
+                                    <span class="text-muted text-sm font-mono">80%</span>
+                                </div>
+                                <div class="h-1 bg-card overflow-hidden"><div class="h-full bg-muted" style="width: 80%"></div></div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-foreground text-sm">DevOps & Deployment</span>
+                                    <span class="text-muted text-sm font-mono">75%</span>
+                                </div>
+                                <div class="h-1 bg-card overflow-hidden"><div class="h-full bg-muted" style="width: 75%"></div></div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-foreground text-sm">UI/UX Design</span>
+                                    <span class="text-muted text-sm font-mono">70%</span>
+                                </div>
+                                <div class="h-1 bg-card overflow-hidden"><div class="h-full bg-muted" style="width: 70%"></div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- VAWC Project -->
-                <div class="bg-light-100 border border-light-50 rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300 flex flex-col group">
-                    <div class="relative bg-light-50 p-8 flex items-center justify-center h-48">
-                        <div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 group-hover:from-primary/10 group-hover:to-primary/20 transition-all duration-300"></div>
-                        <div class="text-center relative z-10">
-                            <svg class="w-16 h-16 mx-auto mb-3 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-background">
+        <div class="mx-auto max-w-6xl">
+            <div class="grid lg:grid-cols-[200px_1fr] gap-12">
+                <!-- Section Label -->
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-px bg-muted mt-3"></div>
+                    <span class="text-muted text-sm uppercase tracking-[0.2em] font-medium">Contact</span>
+                </div>
+
+                <!-- Content -->
+                <div class="space-y-12">
+                    <div class="space-y-6 max-w-2xl">
+                        <h2 class="text-foreground text-3xl md:text-4xl font-bold leading-tight">
+                            Let's work together
+                        </h2>
+                        <p class="text-accent text-lg leading-relaxed">
+                            If you would like to discuss a project or just say hi, I'm always down to chat. Feel free to reach out through any of the channels below.
+                        </p>
+                    </div>
+
+                    <!-- Contact Links -->
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <a href="mailto:glennviola32@gmail.com" class="group flex items-center justify-between p-5 bg-card/30 border border-card hover:border-muted transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <svg class="w-5 h-5 text-muted group-hover:text-foreground transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                                <div>
+                                    <div class="text-muted text-xs uppercase tracking-wider mb-1">Email</div>
+                                    <div class="text-foreground font-medium group-hover:text-accent transition-colors">glennviola32@gmail.com</div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/Glenndork" target="_blank" class="group flex items-center justify-between p-5 bg-card/30 border border-card hover:border-muted transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <svg class="w-5 h-5 text-muted group-hover:text-foreground transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                    <div class="text-muted text-xs uppercase tracking-wider mb-1">GitHub</div>
+                                    <div class="text-foreground font-medium group-hover:text-accent transition-colors">@Glenndork</div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/glenn-viola-4b74962a8/" target="_blank" class="group flex items-center justify-between p-5 bg-card/30 border border-card hover:border-muted transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <svg class="w-5 h-5 text-muted group-hover:text-foreground transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                                </svg>
+                                <div>
+                                    <div class="text-muted text-xs uppercase tracking-wider mb-1">LinkedIn</div>
+                                    <div class="text-foreground font-medium group-hover:text-accent transition-colors">Glenn Viola</div>
+                                </div>
+                            </div>
+                        </a>
+
+                         <a href="assets/resume.pdf" target="_blank" class="group flex items-center justify-between p-5 bg-card/30 border border-card hover:border-muted transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <svg class="w-5 h-5 text-muted group-hover:text-foreground transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                </svg>  
+                                <div>
+                                    <div class="text-muted text-xs uppercase tracking-wider mb-1">Download Resume</div>
+                                    <div class="text-foreground font-medium group-hover:text-accent transition-colors">Glenn Viola</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- CTA Button -->
+                    <!-- <div class="pt-4">
+                        <a href="mailto:glenndork@gmail.com" class="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background font-medium hover:bg-accent transition-colors duration-200">
+                            Send a Message
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 12m0 0l-4 4m4-4l4 4"></path>
                             </svg>
-                            <p class="text-secondary text-sm font-medium">Image Not Available</p>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-2xl font-bold text-primary mb-3">VAWC</h3>
-                        <p class="text-sm text-secondary mb-2 font-semibold">Standalone Information System</p>
-                        <p class="text-secondary text-sm mb-4 flex-grow leading-relaxed">
-                            Refactored an existing EMR VAWC module into a standalone information system. Preserved and adapted legacy data structures while separating core system logic. Implemented case records and administrative dashboards.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/30">Laravel</span>
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/30">React</span>
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/30">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bastion Project -->
-                <div class="bg-light-100 border border-light-50 rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300 flex flex-col group">
-                    <div class="relative bg-light-50 h-48 overflow-hidden">
-                        <div id="bastion-carousel" class="w-full h-full relative">
-                            <div class="flex transition-transform duration-500 ease-out h-full" style="transform: translateX(0%)">
-                                <img src="assets/bastion-1.png" alt="Bastion App Screenshot 1" class="w-full h-full object-cover min-w-full">
-                                <img src="assets/bastion-2.png" alt="Bastion App Screenshot 2" class="w-full h-full object-cover min-w-full">
-                                <img src="assets/bastion-3.png" alt="Bastion App Screenshot 3" class="w-full h-full object-cover min-w-full">
-                            </div>
-                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors carousel-indicator" data-carousel="bastion" data-index="0"></button>
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors carousel-indicator" data-carousel="bastion" data-index="1"></button>
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors carousel-indicator" data-carousel="bastion" data-index="2"></button>
-                            </div>
-                            <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-primary/50 hover:bg-primary backdrop-blur-sm rounded-full p-2 transition-all z-10 carousel-prev" data-carousel="bastion">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-primary/50 hover:bg-primary backdrop-blur-sm rounded-full p-2 transition-all z-10 carousel-next" data-carousel="bastion">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-2xl font-bold text-primary mb-3">Bastion</h3>
-                        <p class="text-sm text-secondary mb-2 font-semibold">Malware Detection App</p>
-                        <p class="text-secondary text-sm mb-4 flex-grow leading-relaxed">
-                            A desktop-based malware detection application using Support Vector Machines. 
-                            Features include real-time malware scanning, SMS notifications via Vonage API, 
-                            and a scan history log.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-medium border border-secondary/30">SVM</span>
-                            <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-medium border border-secondary/30">Vonage API</span>
-                            <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-medium border border-secondary/30">Desktop App</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- NIO Project -->
-                <div class="bg-light-100 border border-light-50 rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300 flex flex-col group">
-                    <div class="relative bg-light-50 h-48 overflow-hidden">
-                        <div id="nio-carousel" class="w-full h-full relative">
-                            <div class="flex transition-transform duration-500 ease-out h-full" style="transform: translateX(0%)">
-                                <img src="assets/nio-1.jpg" alt="NIO App Screenshot 1" class="w-full h-full object-cover min-w-full">
-                                <img src="assets/nio-2.jpg" alt="NIO App Screenshot 2" class="w-full h-full object-cover min-w-full">
-                                <img src="assets/nio-3.png" alt="NIO App Screenshot 3" class="w-full h-full object-cover min-w-full">
-                            </div>
-                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors carousel-indicator" data-carousel="nio" data-index="0"></button>
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors carousel-indicator" data-carousel="nio" data-index="1"></button>
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors carousel-indicator" data-carousel="nio" data-index="2"></button>
-                            </div>
-                            <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-primary/50 hover:bg-primary backdrop-blur-sm rounded-full p-2 transition-all z-10 carousel-prev" data-carousel="nio">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-primary/50 hover:bg-primary backdrop-blur-sm rounded-full p-2 transition-all z-10 carousel-next" data-carousel="nio">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-2xl font-bold text-primary mb-3">NIO: Speech Analysis</h3>
-                        <p class="text-sm text-secondary mb-2 font-semibold">Speech Analysis</p>
-                        <p class="text-secondary text-sm mb-4 flex-grow leading-relaxed">
-                            NIO is an application that aims to help students and public speakers become more fluent 
-                            in their speeches by providing them with tools and resources to improve their speaking skills.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium border border-accent/30">Speech Analysis</span>
-                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium border border-accent/30">AI</span>
-                        </div>
-                    </div>
+                        </a>
+                    </div> -->
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-light-50 bg-light-100">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col items-center space-y-6">
-                <div class="flex space-x-6">
-                    <a href="https://github.com/Glenndork" target="_blank" class="text-secondary hover:text-primary transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+    <footer class="py-8 px-6 bg-background border-t border-card">
+        <div class="mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-8">
+                    <span class="text-muted text-sm">© 2026 Glenn Viola</span>
+                    <span class="hidden md:block text-card">|</span>
+                    <span class="text-muted text-sm">XD</span>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <a href="https://github.com/Glenndork" target="_blank" class="text-muted hover:text-foreground transition-colors duration-200" aria-label="GitHub">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
                         </svg>
                     </a>
-                    <a href="https://www.linkedin.com/in/glenn-viola-4b74962a8/" target="_blank" class="text-secondary hover:text-primary transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <a href="https://www.linkedin.com/in/glenn-viola-4b74962a8/" target="_blank" class="text-muted hover:text-foreground transition-colors duration-200" aria-label="LinkedIn">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
                         </svg>
                     </a>
                 </div>
-                <p class="text-secondary text-sm">
-                    &copy; 2025 Glenn Viola.
-                </p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when link is clicked
+        mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 
 </body>
 </html>
