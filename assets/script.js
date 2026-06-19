@@ -1,89 +1,105 @@
-// Mobile menu toggle
-document.getElementById('menu-toggle').addEventListener('click', function() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenu.classList.toggle('hidden');
+const header = document.querySelector('[data-header]');
+const menuToggle = document.querySelector('[data-menu-toggle]');
+const mobileNav = document.querySelector('[data-mobile-nav]');
+const navLinks = [...document.querySelectorAll('[data-nav-link]')];
+
+const closeMenu = ({ restoreFocus = false } = {}) => {
+    if (!menuToggle || !mobileNav) return;
+
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open navigation');
+    mobileNav.hidden = true;
+    document.body.classList.remove('menu-open');
+
+    if (restoreFocus) menuToggle.focus();
+};
+
+const openMenu = () => {
+    if (!menuToggle || !mobileNav) return;
+
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.setAttribute('aria-label', 'Close navigation');
+    mobileNav.hidden = false;
+    document.body.classList.add('menu-open');
+
+    const firstLink = mobileNav.querySelector('a');
+    firstLink?.focus();
+};
+
+menuToggle?.addEventListener('click', () => {
+    const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
 });
 
-// Close mobile menu when clicking a link
-document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.add('hidden');
+mobileNav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => closeMenu());
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menuToggle?.getAttribute('aria-expanded') === 'true') {
+        closeMenu({ restoreFocus: true });
+    }
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 960 && menuToggle?.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+    }
+});
+
+const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 16);
+updateHeader();
+window.addEventListener('scroll', updateHeader, { passive: true });
+
+requestAnimationFrame(() => document.body.classList.add('is-ready'));
+
+const revealTargets = [...document.querySelectorAll('[data-reveal]')];
+
+if ('IntersectionObserver' in window) {
+    document.body.classList.add('motion-ready');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        });
+    }, {
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.08,
     });
-});
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+    revealTargets.forEach((target) => revealObserver.observe(target));
+}
 
-// Carousel functionality using Tailwind
-document.addEventListener('DOMContentLoaded', function() {
-    const carousels = {
-        'bastion': { currentIndex: 0 },
-        'nio': { currentIndex: 0 }
+const observedSections = ['work', 'profile', 'contact']
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+if (observedSections.length) {
+    let navFrame;
+
+    const updateActiveNavigation = () => {
+        const marker = window.scrollY + (window.innerHeight * 0.38);
+        const activeSection = [...observedSections]
+            .reverse()
+            .find((section) => marker >= section.offsetTop) || observedSections[0];
+
+        navLinks.forEach((link) => {
+            if (link.getAttribute('href') === `#${activeSection.id}`) {
+                link.setAttribute('aria-current', 'location');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
     };
 
-    Object.keys(carousels).forEach(carouselName => {
-        const carousel = document.getElementById(`${carouselName}-carousel`);
-        if (!carousel) return;
+    const requestNavUpdate = () => {
+        cancelAnimationFrame(navFrame);
+        navFrame = requestAnimationFrame(updateActiveNavigation);
+    };
 
-        const inner = carousel.querySelector('.flex');
-        const images = carousel.querySelectorAll('img');
-        const totalSlides = images.length;
-        const indicators = carousel.querySelectorAll('.carousel-indicator');
-        const prevBtn = carousel.querySelector('.carousel-prev');
-        const nextBtn = carousel.querySelector('.carousel-next');
-
-        function updateCarousel(index) {
-            carousels[carouselName].currentIndex = (index + totalSlides) % totalSlides;
-            const offset = carousels[carouselName].currentIndex * 100;
-            inner.style.transform = `translateX(-${offset}%)`;
-
-            // Update indicators
-            indicators.forEach((indicator, i) => {
-                if (i === carousels[carouselName].currentIndex) {
-                    indicator.classList.add('bg-white');
-                    indicator.classList.remove('bg-white/50');
-                } else {
-                    indicator.classList.add('bg-white/50');
-                    indicator.classList.remove('bg-white');
-                }
-            });
-        }
-
-        // Set up button handlers
-        prevBtn.addEventListener('click', () => {
-            updateCarousel(carousels[carouselName].currentIndex - 1);
-        });
-
-        nextBtn.addEventListener('click', () => {
-            updateCarousel(carousels[carouselName].currentIndex + 1);
-        });
-
-        // Set up indicator handlers
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                updateCarousel(index);
-            });
-        });
-
-        // Initialize first carousel state
-        updateCarousel(0);
-
-        // Auto-advance every 5 seconds
-        setInterval(() => {
-            updateCarousel(carousels[carouselName].currentIndex + 1);
-        }, 5000);
-    });
-});
+    updateActiveNavigation();
+    window.addEventListener('scroll', requestNavUpdate, { passive: true });
+    window.addEventListener('resize', requestNavUpdate);
+}
