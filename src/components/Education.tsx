@@ -2,21 +2,21 @@ import { Section } from '@/components/Section'
 import { Typed, type Segment } from '@/components/Typed'
 import { education } from '@/data/content'
 
-export function Education() {
+export function EducationBody() {
   let order = 0
 
   return (
-    <Section id="education" heading="education">
+    <>
       {education.map((item) => {
         const org: Segment[] = [{ text: item.org }]
         for (const extra of item.extra) {
           org.push({ text: ' • ', className: 'text-dim' }, { text: extra })
         }
         if (item.honors) {
-          org.push({ text: ' • ', className: 'text-dim' }, {
-            text: item.honors,
-            className: 'text-foreground',
-          })
+          org.push(
+            { text: ' • ', className: 'text-dim' },
+            { text: item.honors, className: 'text-foreground' },
+          )
         }
 
         return (
@@ -42,6 +42,14 @@ export function Education() {
           </div>
         )
       })}
+    </>
+  )
+}
+
+export function Education() {
+  return (
+    <Section id="education" heading="education">
+      <EducationBody />
     </Section>
   )
 }

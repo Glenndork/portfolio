@@ -2,11 +2,11 @@ import { Section } from '@/components/Section'
 import { Typed } from '@/components/Typed'
 import { experience } from '@/data/content'
 
-export function Experience() {
+export function ExperienceBody() {
   let order = 0
 
   return (
-    <Section id="experience" heading="experience">
+    <>
       {experience.map((job) => (
         <div key={job.title} className="entry">
           <Typed
@@ -34,6 +34,14 @@ export function Experience() {
           </ul>
         </div>
       ))}
+    </>
+  )
+}
+
+export function Experience() {
+  return (
+    <Section id="experience" heading="experience">
+      <ExperienceBody />
     </Section>
   )
 }

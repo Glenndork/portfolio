@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Keep the contribution graph current without needing a push.
+  schedule:
+    - cron: '0 6 * * *'
 
 permissions:
   contents: read
@@ -27,6 +30,12 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # Publishes the contribution calendar including private repos. No-ops
+      # (public contributions only) when the secret isn't configured.
+      - run: npm run contributions
+        env:
+          GH_CONTRIB_TOKEN: ${{ secrets.GH_CONTRIB_TOKEN }}
 
       - run: npm run build
 

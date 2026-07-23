@@ -2,9 +2,10 @@ import { Section } from '@/components/Section'
 import { Typed } from '@/components/Typed'
 import { about } from '@/data/content'
 
-export function About() {
+/** Content only — rendered both as a page section and as terminal output. */
+export function AboutBody() {
   return (
-    <Section id="about" heading="about">
+    <>
       <Typed
         order={0}
         as="p"
@@ -25,6 +26,14 @@ export function About() {
         className="comment mt-[22px] text-[0.95rem] text-muted-foreground"
         segments={[{ text: about.comment }]}
       />
+    </>
+  )
+}
+
+export function About() {
+  return (
+    <Section id="about" heading="about">
+      <AboutBody />
     </Section>
   )
 }

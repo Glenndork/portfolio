@@ -73,7 +73,8 @@
   --radius-lg: 0px;
   --radius-xl: 0px;
 
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, "Courier New", monospace;
+  --font-mono: "JetBrains Mono Variable", "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+    "Courier New", monospace;
   --font-sans: var(--font-mono);
 }
 

@@ -11,20 +11,13 @@ const links = [
   { label: profile.phone, href: profile.phoneHref, external: false },
 ]
 
-export function Contact() {
+export function ContactBody({ headingId }: { headingId?: string }) {
   return (
-    <Section
-      id="contact"
-      heading="contact"
-      headingAs="div"
-      labelledBy="contact-heading"
-      headingClassName="tag-center"
-      className="pb-[60px] text-center"
-    >
+    <>
       <Typed
         order={0}
         as="h2"
-        id="contact-heading"
+        id={headingId}
         className="text-[clamp(1.8rem,6vw,3rem)] font-bold tracking-[-1px]"
         segments={[
           { text: "let's " },
@@ -54,15 +47,28 @@ export function Contact() {
           >
             <a
               href={link.href}
-              {...(link.external
-                ? { target: '_blank', rel: 'noopener noreferrer' }
-                : {})}
+              {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
               {link.label}
             </a>
           </Button>
         ))}
       </div>
+    </>
+  )
+}
+
+export function Contact() {
+  return (
+    <Section
+      id="contact"
+      heading="contact"
+      headingAs="div"
+      labelledBy="contact-heading"
+      headingClassName="tag-center"
+      className="pb-[60px] text-center"
+    >
+      <ContactBody headingId="contact-heading" />
     </Section>
   )
 }

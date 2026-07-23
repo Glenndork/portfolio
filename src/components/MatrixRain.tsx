@@ -49,7 +49,7 @@ export function MatrixRain() {
       // Translucent black over the previous frame gives the trailing effect.
       ctx.fillStyle = 'rgba(0,0,0,0.08)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
-      ctx.font = `${fontSize}px 'SFMono-Regular', Consolas, monospace`
+      ctx.font = `${fontSize}px 'JetBrains Mono Variable', 'SFMono-Regular', Consolas, monospace`
 
       for (let i = 0; i < cols; i++) {
         const y = drops[i] * fontSize

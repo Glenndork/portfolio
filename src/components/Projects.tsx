@@ -3,11 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { projects } from '@/data/content'
 
-export function Projects() {
+/** `only` narrows to a single project, for `cat projects/vawc`. */
+export function ProjectsBody({ only }: { only?: string } = {}) {
+  const shown = only ? projects.filter((p) => p.name === only) : projects
+
   return (
-    <Section id="projects" heading="projects">
-      <div className="grid grid-cols-2 gap-5 max-[680px]:grid-cols-1">
-        {projects.map((project) => (
+      <div className={only ? 'grid grid-cols-1 gap-5' : 'grid grid-cols-2 gap-5 max-[680px]:grid-cols-1'}>
+        {shown.map((project) => (
           <Card
             key={project.name}
             className="gap-0 border-border bg-card p-[26px] shadow-none transition-[border-color,transform] duration-250 hover:-translate-y-1 hover:border-[#3a3a3a] focus-within:-translate-y-1 focus-within:border-[#3a3a3a] motion-reduce:transform-none"
@@ -46,6 +48,13 @@ export function Projects() {
           </Card>
         ))}
       </div>
+  )
+}
+
+export function Projects() {
+  return (
+    <Section id="projects" heading="projects">
+      <ProjectsBody />
     </Section>
   )
 }

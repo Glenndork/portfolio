@@ -36,15 +36,19 @@ export function TypeGroup({
   active,
   count,
   onComplete,
+  instant: forceInstant = false,
   children,
 }: {
   active: boolean
   /** How many <Typed> children this group holds; required for onComplete. */
   count?: number
   onComplete?: () => void
+  /** Print everything at once — terminal output shouldn't type itself out. */
+  instant?: boolean
   children: React.ReactNode
 }) {
-  const reduced = useReducedMotion()
+  const reducedMotion = useReducedMotion()
+  const reduced = reducedMotion || forceInstant
   const [step, setStep] = useState(0)
   const advance = useCallback(() => setStep((s) => s + 1), [])
   const completed = useRef(false)

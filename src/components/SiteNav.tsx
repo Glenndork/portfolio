@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { navLinks } from '@/data/content'
 
-export function SiteNav() {
+export function SiteNav({ onOpenTerminal }: { onOpenTerminal: () => void }) {
   return (
     <nav
       aria-label="Primary navigation"
@@ -11,7 +11,7 @@ export function SiteNav() {
         <span className="text-muted-foreground">~/</span>glenn.viola
       </a>
 
-      <div className="flex flex-wrap justify-end gap-[18px] max-sm:gap-3">
+      <div className="flex flex-wrap items-center justify-end gap-[18px] max-sm:gap-3">
         {navLinks.map((link) => (
           <a
             key={link.href}
@@ -24,6 +24,14 @@ export function SiteNav() {
             {link.label}
           </a>
         ))}
+
+        <button
+          type="button"
+          onClick={onOpenTerminal}
+          className="min-h-9 cursor-pointer border border-[#3a3a3a] px-2.5 py-1.5 text-xs text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+        >
+          $ shell
+        </button>
       </div>
     </nav>
   )

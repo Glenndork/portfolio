@@ -3,3 +3,6 @@ node_modules/
 dist/
 *.local
 .DS_Store
+
+# generated at build time by scripts/fetch-contributions.mjs
+public/contributions.json

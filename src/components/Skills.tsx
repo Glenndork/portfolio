@@ -3,11 +3,11 @@ import { skillRows } from '@/data/content'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { cn } from '@/lib/utils'
 
-export function Skills() {
+export function SkillsBody() {
   const reduced = useReducedMotion()
 
   return (
-    <Section id="skills" heading="technical skills">
+    <>
       {skillRows.map((row, i) => (
         <div key={i} className={cn('marquee', i > 0 && 'mt-4')}>
           <div className={cn('track', i % 2 === 0 ? 'track-left' : 'track-right')}>
@@ -23,6 +23,14 @@ export function Skills() {
           </div>
         </div>
       ))}
+    </>
+  )
+}
+
+export function Skills() {
+  return (
+    <Section id="skills" heading="technical skills">
+      <SkillsBody />
     </Section>
   )
 }

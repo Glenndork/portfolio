@@ -22,13 +22,27 @@ Pushing to `main` triggers `.github/workflows/deploy.yml`: build → smoke test 
 
 **`base: '/portfolio/'` in `vite.config.ts` is load-bearing.** The site is served from a repo subpath; without it every asset URL resolves at the domain root and the deployed page renders blank. Anything referencing a file in `public/` must go through `import.meta.env.BASE_URL` (see `profile.resume` in `src/data/content.ts`), never a bare `/assets/...`.
 
+## Two modes
+
+The site has **two ways to read it**, switched at runtime and remembered in `localStorage` (`gv-mode`):
+
+- **terminal** (default) — a shell. Visitors type `ls`, `cd projects`, `cat about.md`, `whoami` etc. and each section prints as command output. `gui` leaves for the page.
+- **gui** — the scrolling page, reached by the `gui` command or the `$ shell` toggle in the nav.
+
+A URL with a hash (`/portfolio/#projects`) forces gui mode, so shared links land somewhere readable. **The terminal must never be the only way to reach content**: the `classic view` button, the tap-able command chips, and the hash rule are all load-bearing for visitors who can't or won't type.
+
+Adding a section means touching four places: a body component, the `FS` entry in `src/lib/filesystem.ts`, `BODIES` in `SectionOutput.tsx`, and the page in `App.tsx`.
+
 ## Architecture
 
 - `src/data/content.ts` — all copy: profile, about, experience, projects, skills, education, nav. Edit content here, not in components.
+- Each section component exports **two** things: a `XBody` (content only) and an `X` (the same body wrapped in `Section` for the page). The terminal renders bodies through `SectionOutput`, which forces `TypeGroup instant` — a shell prints its result rather than animating it.
+- `src/lib/filesystem.ts` — the virtual filesystem the shell walks: path resolution, `ls`, and tab completion.
+- `src/components/Terminal.tsx` — the command engine. Tab completes, ↑/↓ recalls history, ctrl+l clears. Tab is only intercepted when the prompt has text, so an empty prompt still moves focus.
 - `src/components/Typed.tsx` — `TypeGroup` + `Typed` drive the terminal typewriter. Children declare their position with an explicit `order` prop; **don't replace this with a mount-order registry**, since StrictMode's double-mount skews the count. `TypeGroup` takes `count` + `onComplete` for sequencing follow-on UI (the hero's meta row waits on it).
 - `src/components/Section.tsx` — shared shell: scroll reveal, `aria-labelledby`, and the `TypeGroup` for its contents.
 - `src/components/BootScreen.tsx` — the login overlay. It must always keep three ways out: the sequence completing, the skip control (button or Escape), and the 10s failsafe.
-- `src/components/Contributions.tsx` — GitHub contribution graph. GitHub's own contribution data is GraphQL-only and needs a token a static site can't hold, so this reads a public token-free proxy (`github-contributions-api.jogruber.de`) and **must** degrade to a plain profile link when the request fails.
+- `src/components/Contributions.tsx` — GitHub contribution graph, with a three-step fallback that **must** be preserved: `public/contributions.json` (written during CI by `scripts/fetch-contributions.mjs`, the only source that includes **private** repos) → a public token-free proxy (public activity only) → a plain profile link. Private contributions are GraphQL-only and need a user-owned token, which is why the fetch happens at build time behind the `GH_CONTRIB_TOKEN` secret; only daily counts are published, never repo names.
 - `src/components/ui/` — shadcn components. Regenerate with `npx shadcn@latest add <name>`; don't hand-edit beyond what the CLI writes.
 - `public/assets/` — images and `resume.pdf`, copied verbatim into the build. Old asset URLs still resolve.
 
