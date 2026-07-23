@@ -2,7 +2,7 @@ export const profile = {
   name: 'Glenn B. Viola',
   role: 'Software Developer',
   degree: 'BS Computer Science',
-  location: 'Legazpi, Albay',
+  location: 'Manila, Philippines',
   email: 'glennviola32@gmail.com',
   phone: '0967 345 4221',
   phoneHref: 'tel:+639673454221',
