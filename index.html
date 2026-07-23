@@ -1,193 +1,28 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Glenn B. Viola is a software developer who modernizes legacy systems — building clinic information systems, case management platforms, desktop security tools, and applied machine learning.">
-    <meta name="theme-color" content="#000000">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Glenn B. Viola is a software developer who modernizes legacy systems — building clinic information systems, case management platforms, desktop security tools, and applied machine learning."
+    />
+    <meta name="theme-color" content="#000000" />
     <title>Glenn B. Viola — Software Developer</title>
-    <link rel="preload" href="assets/styles.css" as="style">
-    <link rel="stylesheet" href="assets/styles.css">
-    <script>document.documentElement.classList.add('js');</script>
-    <script src="assets/script.js" defer></script>
-</head>
-<body class="booting">
-
-<a class="skip-link" href="#main-content">Skip to main content</a>
-
-<!-- BOOT / terminal login -->
-<div id="boot">
-    <div class="term">
-        <div class="term-bar">
-            <i></i><i></i><i></i>
-            <span class="title">glenn@portfolio — bash</span>
-        </div>
-        <div class="term-body">
-            <div class="cmdline"><span class="pmt">glenn@portfolio</span><span class="pth">:~$</span>&nbsp;<span id="cmd"></span><span id="bcursor" class="bcursor"></span></div>
-            <div id="bootlog"></div>
-        </div>
-    </div>
-    <button class="boot-skip" type="button" data-boot-skip>skip intro [esc]</button>
-</div>
-
-<canvas id="matrix" aria-hidden="true"></canvas>
-<div class="veil" aria-hidden="true"></div>
-
-<nav class="nav" aria-label="Primary navigation">
-    <a class="brand" href="#top"><span class="tilde">~/</span>glenn.viola</a>
-    <div class="links">
-        <a class="optional" href="#about">about</a>
-        <a href="#experience">work</a>
-        <a href="#projects">projects</a>
-        <a class="optional" href="#skills">skills</a>
-        <a href="#contact">contact</a>
-    </div>
-</nav>
-
-<main class="wrap" id="main-content">
-
-    <!-- HERO -->
-    <header class="hero" id="top">
-        <div class="prompt type"><b>glenn@dev</b>:~$ whoami</div>
-        <h1 class="type">GLENN B.<br><span class="last">VIOLA</span></h1>
-        <div class="role type"><span class="op">const</span> role <span class="op">=</span> "Software Developer"</div>
-        <div class="meta late">
-            <span>BS Computer Science</span>
-            <span>Legazpi, Albay</span>
-            <a href="mailto:glennviola32@gmail.com">glennviola32@gmail.com</a>
-            <a href="https://github.com/Glenndork" target="_blank" rel="noopener noreferrer">github/glenndork ↗</a>
-            <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">résumé ↗</a>
-        </div>
-        <div class="scrollcue late" aria-hidden="true">↓ scroll</div>
-    </header>
-
-    <!-- ABOUT -->
-    <section id="about" class="section about reveal" aria-labelledby="about-title">
-        <h2 class="tag" id="about-title">about</h2>
-        <p class="type">I'm a <span class="kw">Computer Science</span> graduate and <span class="kw">software developer</span> who enjoys breathing new life into legacy systems — modernizing old workflows without breaking what already works.</p>
-        <p class="comment type">turning coffee, curiosity, and clean queries into working software.</p>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section reveal" aria-labelledby="experience-title">
-        <h2 class="tag" id="experience-title">experience</h2>
-        <div class="entry">
-            <div class="when type">MAY 2025 — DECEMBER 2025</div>
-            <h3 class="type">Information Systems Analyst</h3>
-            <div class="org type">Philippine Business for Social Progress</div>
-            <ul>
-                <li class="type">Analyzed legacy clinic system workflows and documented requirements for system modernization.</li>
-                <li class="type">Mapped existing database structures to new application logic while ensuring data consistency.</li>
-                <li class="type">Coordinated testing, validation, and issue resolution to support a smooth system transition.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section reveal" aria-labelledby="projects-title">
-        <h2 class="tag" id="projects-title">projects</h2>
-        <div class="grid">
-
-            <article class="proj">
-                <div class="top"><span>~/projects/iclinicsys</span><span class="no">01</span></div>
-                <h3>iClinicSys</h3>
-                <div class="stack"><span>Laravel</span><span>React</span><span>MySQL</span></div>
-                <ul>
-                    <li>Modernized a legacy clinic information system using Laravel while retaining the existing database structure.</li>
-                    <li>Implemented patient records, administrative dashboards, and reference data modules.</li>
-                    <li>Fixed legacy data issues, optimized queries, and ensured secure, role-based access to patient information.</li>
-                </ul>
-            </article>
-
-            <article class="proj">
-                <div class="top"><span>~/projects/vawc</span><span class="no">02</span></div>
-                <h3>VAWC</h3>
-                <div class="stack"><span>Laravel</span><span>React</span><span>MySQL</span></div>
-                <ul>
-                    <li>Refactored an existing EMR VAWC module into a standalone information system.</li>
-                    <li>Preserved and adapted legacy data structures while separating core system logic.</li>
-                    <li>Implemented case records and administrative dashboards.</li>
-                </ul>
-            </article>
-
-            <article class="proj">
-                <div class="top"><span>~/projects/bastion</span><span class="no">03</span></div>
-                <h3>Bastion</h3>
-                <div class="stack"><span>SVM</span><span>Vonage API</span><span>Desktop</span></div>
-                <ul>
-                    <li>Built a desktop malware detection application using support vector machines.</li>
-                    <li>Added real-time scanning with SMS alerts through the Vonage API.</li>
-                    <li>Kept a complete scan history for ongoing security monitoring.</li>
-                </ul>
-            </article>
-
-            <article class="proj">
-                <div class="top"><span>~/projects/nio</span><span class="no">04</span></div>
-                <h3>NIO</h3>
-                <div class="stack"><span>Speech analysis</span><span>AI</span><span>Flutter</span></div>
-                <ul>
-                    <li>Created a speech-analysis app that helps students and public speakers improve fluency.</li>
-                    <li>Delivered focused feedback and practice tools for clearer speaking habits.</li>
-                    <li>Packaged resources for building confidence before real presentations.</li>
-                </ul>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section reveal" aria-labelledby="skills-title">
-        <h2 class="tag" id="skills-title">technical skills</h2>
-
-        <div class="marquee">
-            <div class="track left" data-loop>
-                <span class="item">Java</span><span class="item">C</span><span class="item">C++</span>
-                <span class="item">HTML/CSS</span><span class="item">JavaScript</span><span class="item">PHP</span>
-            </div>
-        </div>
-
-        <div class="marquee">
-            <div class="track right" data-loop>
-                <span class="item">Flutter</span><span class="item">React</span><span class="item">Laravel</span>
-                <span class="item">MySQL</span><span class="item">VS Code</span><span class="item">Git</span><span class="item">GitHub</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" class="section reveal" aria-labelledby="education-title">
-        <h2 class="tag" id="education-title">education</h2>
-        <div class="entry">
-            <div class="when type">AUGUST 2020 — JULY 2024</div>
-            <h3 class="type">Bachelor of Science in Computer Science</h3>
-            <div class="org type">Bicol University <span class="dot">•</span> Legazpi, Albay</div>
-        </div>
-        <div class="entry">
-            <div class="when type">JUNE 2014 — MARCH 2020</div>
-            <h3 class="type">TVL — Information &amp; Communications Technology</h3>
-            <div class="org type">Camarines Sur National High School <span class="dot">•</span> Naga City <span class="dot">•</span> <span class="honors">With Honors</span></div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact reveal" aria-labelledby="contact-title">
-        <div class="tag">contact</div>
-        <h2 class="type" id="contact-title">let's <span class="op">&lt;</span>build<span class="op">/&gt;</span> together</h2>
-        <p class="type">Open to opportunities and collaborations. Drop a line — I usually reply fast.</p>
-        <div class="btns">
-            <a href="mailto:glennviola32@gmail.com">Email</a>
-            <a href="https://github.com/Glenndork" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/glenn-viola-4b74962a8/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
-            <a href="tel:+639673454221">0967 345 4221</a>
-        </div>
-    </section>
-
-</main>
-
-<footer class="site-footer">
-    <p>© 2026 Glenn B. Viola — <span class="heart">built with { code }</span> &amp; curiosity.</p>
-</footer>
-
-</body>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="padding: 2rem; color: #fff; background: #000; font-family: monospace">
+        <h1>Glenn B. Viola — Software Developer</h1>
+        <p>This portfolio needs JavaScript enabled. In the meantime:</p>
+        <ul>
+          <li><a style="color: #fff" href="mailto:glennviola32@gmail.com">glennviola32@gmail.com</a></li>
+          <li><a style="color: #fff" href="https://github.com/Glenndork">github.com/Glenndork</a></li>
+          <li><a style="color: #fff" href="/portfolio/assets/resume.pdf">Résumé (PDF)</a></li>
+        </ul>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

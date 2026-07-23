@@ -1,0 +1,292 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ==========================================================================
+   Terminal theme tokens.
+   The site is always black-on-white-text; there is no light mode, so the
+   shadcn variables below are set once to the terminal palette rather than
+   being duplicated under a .dark selector.
+   ========================================================================== */
+
+:root {
+  /* bespoke terminal palette */
+  --term-bg: #000000;
+  --term-fg: #ffffff;
+  --term-muted: #8a8a8a;
+  --term-dim: #4a4a4a;
+  --term-line: #1e1e1e;
+  --term-card: #0a0a0a;
+  --term-body: #cfcfcf;
+
+  /* shadcn contract, mapped onto the palette above */
+  --radius: 0rem;
+  --background: var(--term-bg);
+  --foreground: var(--term-fg);
+  --card: var(--term-card);
+  --card-foreground: var(--term-fg);
+  --popover: var(--term-card);
+  --popover-foreground: var(--term-fg);
+  --primary: var(--term-fg);
+  --primary-foreground: var(--term-bg);
+  --secondary: var(--term-card);
+  --secondary-foreground: var(--term-fg);
+  --muted: var(--term-card);
+  --muted-foreground: var(--term-muted);
+  --accent: var(--term-card);
+  --accent-foreground: var(--term-fg);
+  --destructive: #ff5f56;
+  --destructive-foreground: var(--term-bg);
+  --border: var(--term-line);
+  --input: var(--term-line);
+  --ring: var(--term-fg);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* palette aliases so components can say text-muted-fg / border-line */
+  --color-fg: var(--term-fg);
+  --color-dim: var(--term-dim);
+  --color-line: var(--term-line);
+  --color-body: var(--term-body);
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, "Courier New", monospace;
+  --font-sans: var(--font-mono);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    min-width: 320px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--term-fg);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* ==========================================================================
+   Bespoke pieces that are pseudo-element or keyframe driven — clearer here
+   than as utility soup in the components.
+   ========================================================================== */
+
+/* -- section label: // about ------------------------------------ */
+.tag {
+  @apply flex items-center gap-2.5 text-[13px] font-normal tracking-[2px] uppercase text-muted-foreground mb-6;
+}
+.tag::before {
+  content: "//";
+  color: var(--term-dim);
+}
+.tag::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--term-line);
+}
+.tag-center {
+  @apply justify-center;
+}
+
+/* -- blinking caret --------------------------------------------- */
+@keyframes term-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 0.55ch;
+  height: 1em;
+  background: var(--term-fg);
+  vertical-align: -2px;
+  margin-left: 1px;
+  animation: term-blink 1.05s steps(1) infinite;
+}
+.bcursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1.05em;
+  background: var(--term-fg);
+  vertical-align: -2px;
+  margin-left: 1px;
+  animation: term-blink 1.05s steps(1) infinite;
+}
+
+@keyframes term-pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+.scrollcue {
+  animation: term-pulse 2s ease-in-out infinite;
+}
+
+@keyframes term-fadein {
+  to {
+    opacity: 1;
+  }
+}
+.bootline {
+  opacity: 0;
+  animation: term-fadein 0.3s forwards;
+}
+
+/* -- timeline entries ------------------------------------------- */
+.entry {
+  @apply relative border-l pl-[26px] pb-[42px];
+  border-color: var(--term-line);
+}
+.entry:last-child {
+  @apply pb-0;
+}
+.entry::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  background: var(--term-fg);
+  border-radius: 50%;
+}
+.entry-list li {
+  @apply relative pl-5 text-[0.95rem];
+  color: var(--term-body);
+}
+.entry-list li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--term-muted);
+}
+
+/* -- project bullets -------------------------------------------- */
+.proj-list li {
+  @apply relative pl-[18px] text-[0.9rem] leading-[1.55];
+  color: var(--term-body);
+}
+.proj-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--term-dim);
+}
+
+/* -- skills marquee --------------------------------------------- */
+.marquee {
+  @apply relative w-full overflow-hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.track {
+  @apply flex gap-3.5;
+  width: max-content;
+  will-change: transform;
+}
+.track-left {
+  animation: term-scroll-l 26s linear infinite;
+}
+.track-right {
+  animation: term-scroll-r 32s linear infinite;
+}
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+@keyframes term-scroll-l {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes term-scroll-r {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.track .item::after {
+  content: "•";
+  color: var(--term-dim);
+  margin-left: 14px;
+}
+
+/* -- about comment line ----------------------------------------- */
+.comment::before {
+  content: "# ";
+  color: var(--term-dim);
+}
+
+/* -- hero meta chevrons ----------------------------------------- */
+.meta-item::before {
+  content: "› ";
+  color: var(--term-dim);
+}
+
+/* -- nav slashes ------------------------------------------------ */
+.navlink::before {
+  content: "/";
+  color: var(--term-dim);
+  margin-right: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track-left,
+  .track-right {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .scrollcue,
+  .caret::after,
+  .bcursor {
+    animation: none;
+  }
+}
